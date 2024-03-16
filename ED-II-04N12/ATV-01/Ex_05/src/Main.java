@@ -1,13 +1,25 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+
         // Configurações do simulador
-        int tamanhoFila = 10; // Tamanho máximo da fila
-        int numProcessadores = 4; // Número de processadores do servidor
-        int ciclos = 1000; // Número total de ciclos de simulação
-        int maxRequisicoesPorCiclo = 3; // Máximo de requisições que podem chegar em um ciclo
+
+        System.out.println("Digite o tamanho da fila: ");
+        int tamanhoFila = sc.nextInt(); // Tamanho máximo da fila
+
+        System.out.println("Digite o número de processadores: ");
+        int numProcessadores = sc.nextInt(); // Número de processadores do servidor
+
+        System.out.println("Digite o número de ciclos a serem executados: ");
+        int ciclos = sc.nextInt(); // Número total de ciclos de simulação
+
+        System.out.println("Digite o número máximo de Requisições por Ciclo: ");
+        int maxRequisicoesPorCiclo = sc.nextInt(); // Máximo de requisições que podem chegar em um ciclo
 
         // Inicializa a fila
         Fila fila = new Fila(tamanhoFila);
@@ -25,9 +37,9 @@ public class Main {
 
             // Insere novas requisições na fila
             for (int i = 0; i < numRequisicoesChegando; i++) {
+                totalRequisicoes++;
                 if (!fila.isFull()) {
                     fila.enqueue(1); // Simplesmente insere um valor qualquer na fila
-                    totalRequisicoes++;
                 } else {
                     requisiçõesPerdidas++;
                 }
